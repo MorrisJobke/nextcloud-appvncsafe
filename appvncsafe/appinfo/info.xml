@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<info>
+	<id>appvncsafe</id>
+	<name>appvncsafe</name>
+	<description>Module for VNCsafe</description>
+	<version>1.1.1</version>
+	<licence>AGPL</licence>
+	<author>VNC</author>
+	<dependencies>
+		<nextcloud min-version="10" max-version="12" />
+	</dependencies>
+</info>
