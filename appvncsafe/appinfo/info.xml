@@ -2,10 +2,11 @@
 <info>
 	<id>appvncsafe</id>
 	<name>appvncsafe</name>
-	<description>This application is developed by VNC (https://vnc.biz). The primary goal of the application is to support various functions in order to integrate Nextcloud with Zimbra.</description>
+	<description>This application is developed by VNC. It integrates Nextcloud with Zimbra.</description>
 	<version>1.1.2</version>
 	<licence>AGPL</licence>
 	<author>VNC</author>
+	<website>http://vnclagoon.com/products/vncsafe/</website>
         <bugs>https://github.com/vnc-biz/nextcloud-appvncsafe/issues</bugs>
         <repository>https://github.com/vnc-biz/nextcloud-appvncsafe</repository>
 	<dependencies>
