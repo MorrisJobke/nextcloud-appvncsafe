@@ -92,7 +92,7 @@ class ServiceController extends ApiController {
 	*/
 	public function getSearch($query) {
 		\OC::$server->getLogger()->debug($this->appName . ' [ getSearch() Method ]   [ Parameter : $query = ' . $query .' ]');
-		return $this->encodeData($this->formatFileInfos(\OC\Files\Filesystem::search($query)));
+		return $this->encodeData($this->formatFileInfos(\OC\Files\Filesystem::search(urldecode($query))));
 	}
 
 	/**
@@ -276,6 +276,7 @@ class ServiceController extends ApiController {
 		}
 		$version = \OCP\Util::getVersion();
 		$entry['owversion'] = $version[0];
+		$entry['server'] = 'nextcloud';
 		if($version[0]==9 && $version[1] >= 1){
 			$entry['allow_edit_permission'] = 15;
 		}else{
@@ -393,7 +394,7 @@ class ServiceController extends ApiController {
 	*/
 	public function getShareWithYou() {
 		\OC::$server->getLogger()->debug($this->appName . ' [ getShareWithYou() Method ] ');
-		$arr =  \OCP\Share::getItemSharedWithBySource('file');
+		$arr =  \OCP\Share::getItemsSharedWith('file');
 		$dataArray = array();
 		$version = \OCP\Util::getVersion();
 		foreach ($arr as $value) {
@@ -977,4 +978,12 @@ class ServiceController extends ApiController {
 		return $files;
 	}
 
+	/**
+	*       @NoCSRFRequired
+	*       @NoAdminRequired
+	*/
+	public function getOwncloudInstanceId() {
+		$instanceId = \OC::$server->getSystemConfig()->getValue('instanceid', null);
+		return str_replace('"', '', $instanceId);
+	}
 }
